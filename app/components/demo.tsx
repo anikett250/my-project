@@ -32,15 +32,32 @@ const projects = [
     },
 ];
 
-function ProjectCard({ project }: { project: typeof projects[0] }) {
-    const [hovered, setHovered] = useState(false);
+function ProjectCard({ project, isHovered, onMouseEnter, onMouseLeave, onTap }: { 
+    project: typeof projects[0];
+    isHovered: boolean;
+    onMouseEnter: () => void;
+    onMouseLeave: () => void;
+    onTap: () => void;
+}) {
+    const [active, setActive] = useState(false);
+    
+    const isOverlayVisible = isHovered || active;
+
+    const handleCardClick = () => {
+        onTap();
+        setActive(!active);
+    };
+
+    const handleLinkClick = () => {
+        setActive(false);
+    };
 
     return (
         <div
-            className="relative  overflow-hidden cursor-pointer mx-[30px] rounded-2xl flex-1"
-            style={{ minHeight: "350px" }}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
+            className="relative overflow-hidden cursor-pointer mx-[30px] rounded-2xl flex-1 aspect-video"
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            onClick={handleCardClick}
         >
             {/* Image */}
             <img
@@ -49,8 +66,9 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{
                     transition: "transform 0.6s ease, filter 0.6s ease",
-                    transform: hovered ? "scale(1.07)" : "scale(1)",
-                    filter: hovered ? "brightness(0.25)" : "brightness(0.85)",
+                    transform: isOverlayVisible ? "scale(1.07)" : "scale(1)",
+                    filter: isOverlayVisible ? "brightness(0.25)" : "brightness(0.85)",
+                    pointerEvents: "none",
                 }}
             />
 
@@ -61,24 +79,29 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                     background: "linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%)",
                     padding: "48px 28px 24px",
                     transition: "opacity 0.4s ease",
-                    opacity: hovered ? 0 : 1,
+                    opacity: isOverlayVisible ? 0 : 1,
+                    zIndex: 1,
+                    pointerEvents: "none",
                 }}
             >
                 <p className="text-white text-lg font-semibold">{project.title}</p>
             </div>
 
-            {/* Hover overlay */}
+            {/* Hover/Tap overlay */}
             <div
                 className="absolute inset-0 flex flex-col items-center justify-center gap-4"
                 style={{
-                    opacity: hovered ? 1 : 0,
+                    opacity: isOverlayVisible ? 1 : 0,
                     transition: "opacity 0.5s ease",
+                    zIndex: 10,
+                    pointerEvents: isOverlayVisible ? "auto" : "none",
                 }}
             >
                 <a
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
+                    onClick={handleLinkClick}
                     className="flex items-center gap-2 text-white text-sm font-medium px-7 py-3 rounded-full"
                     style={{
                         background: "rgba(255,255,255,0.1)",
@@ -96,6 +119,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                     href={project.live}
                     target="_blank"
                     rel="noreferrer"
+                    onClick={handleLinkClick}
                     className="flex items-center gap-2 text-white text-sm font-medium px-7 py-3 rounded-full"
                     style={{
                         background: "rgba(255,255,255,0.1)",
@@ -115,6 +139,8 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
 }
 
 export default function App() {
+    const [hoveredId, setHoveredId] = useState<number | null>(null);
+
     return (
         <div style={{ backgroundColor: "#0A0A0A" }} className="">
             <h2 className="text-white text-[40px] sm:text-[55px] md:text-[70px] text-center pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12">
@@ -124,7 +150,14 @@ export default function App() {
             <div className="mx-auto px-4 sm:px-12 md:px-24 lg:px-60 pb-0">
                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 md:gap-20" style={{ minHeight: "370px" }}>
                     {projects.map((project) => (
-                        <ProjectCard key={project.id} project={project} />
+                        <ProjectCard 
+                            key={project.id} 
+                            project={project}
+                            isHovered={hoveredId === project.id}
+                            onMouseEnter={() => setHoveredId(project.id)}
+                            onMouseLeave={() => setHoveredId(null)}
+                            onTap={() => setHoveredId(null)}
+                        />
                     ))}
                 </div>
             </div>
