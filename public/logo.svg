@@ -1,0 +1,12 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+	<style>
+		tspan { white-space:pre } 
+		.t0 { font-size: 200px;fill: #c0392b;font-weight: 300;font-family: "SonderRegular", "Sonder" } 
+		.t1 { font-size: 200px;fill: #000000;font-weight: 300;font-family: "SonderRegular", "Sonder" } 
+		.t2 { font-size: 200px;fill: #ffffff;font-weight: 300;font-family: "SonderRegular", "Sonder" } 
+	</style>
+	<text id="Zenvra Studio" transform="translate(90,284)">
+		<tspan x="0" y="139.8" class="t0">Z</tspan><tspan  y="139.8" class="t0">e</tspan><tspan  y="139.8" class="t0">n</tspan><tspan  y="139.8" class="t0">v</tspan><tspan  y="139.8" class="t0">r</tspan><tspan  y="139.8" class="t0">a</tspan><tspan  y="139.8" class="t1"> </tspan><tspan  y="139.8" class="t2">S</tspan><tspan  y="139.8" class="t2">t</tspan><tspan  y="139.8" class="t2">u</tspan><tspan  y="139.8" class="t2">d</tspan><tspan  y="139.8" class="t2">i</tspan><tspan  y="139.8" class="t2">o
+</tspan>
+	</text>
+</svg>
