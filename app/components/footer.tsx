@@ -8,7 +8,7 @@ const navLinks = [
 ];
 
 export default function ZenvraFooter() {
-  const [hovered, setHovered] = useState(null);
+  const [hovered, setHovered] = useState<string | null>(null);
   const [ctaHovered, setCtaHovered] = useState(false);
 
   return (
