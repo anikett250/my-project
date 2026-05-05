@@ -37,8 +37,8 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
 
     return (
         <div
-            className="relative  overflow-hidden cursor-pointer mx-[30px] rounded-2xl"
-            style={{ minHeight: "300px" }}
+            className="relative  overflow-hidden cursor-pointer mx-[30px] rounded-2xl flex-1"
+            style={{ minHeight: "350px" }}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
@@ -116,13 +116,13 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
 
 export default function App() {
     return (
-        <div style={{ backgroundColor: "#0A0A0A" }} className="min-h-screen">
+        <div style={{ backgroundColor: "#0A0A0A" }} className="">
             <h2 className="text-white text-[40px] sm:text-[55px] md:text-[70px] text-center pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12">
                 Our Projects
             </h2>
 
-            <div className="mx-auto px-4 sm:px-12 md:px-24 lg:px-60 pb-20">
-                <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 md:gap-20" style={{ minHeight: "300px" }}>
+            <div className="mx-auto px-4 sm:px-12 md:px-24 lg:px-60 pb-0">
+                <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 md:gap-20" style={{ minHeight: "370px" }}>
                     {projects.map((project) => (
                         <ProjectCard key={project.id} project={project} />
                     ))}
