@@ -8,12 +8,20 @@ import Footer from "./components/footer"
 export default function Home() {
   return (
     <>
-    <Navbar/>
-    <Header/>
-    <Services/>
-    <Demo/>
-    <Contact/>
-    <Footer/>
+      <Navbar />
+      <section id="home">
+        <Header />
+      </section>
+      <section id="services">
+        <Services />
+      </section>
+      <section id="projects">
+        <Demo />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
+      <Footer />
     </>
   );
 }

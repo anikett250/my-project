@@ -26,6 +26,11 @@ export default function Header() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.1 }}
+                    onClick={() => {
+                  document.getElementById("contact")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
                 >
                     Book a Call
                 </motion.button>
@@ -34,6 +39,11 @@ export default function Header() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.1 }}
+                    onClick={() => {
+                  document.getElementById("projects")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
                 >
                     See Our Project
                 </motion.button>

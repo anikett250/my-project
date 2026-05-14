@@ -2,40 +2,52 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-export default function Navbar() {
-    return (
-        <nav className="flex justify-between px-6 md:px-50 mt-5 items-center">
-  {/* Logo */}
-  <motion.div
-    className="h-10 flex items-center overflow-hidden"
-    initial={{ opacity: 0, y: -70 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1, delay: 0.95, type: "spring" }}
-  >
-    <img src="/logo.svg" alt="logo" className="h-30 w-auto block" />
-  </motion.div>
+const navItems = [
+  { label: "Home", id: "home" },
+  { label: "Projects", id: "projects" },
+  { label: "Services", id: "services" },
+  { label: "Contact", id: "contact" },
+];
 
-  {/* Desktop Nav */}
-  <div className="hidden md:flex">
-    {["Home", "Projects", "Services", "Contact"].map((label, i) => (
-      <motion.button
-        key={label}
-        className="px-6 py-2 rounded-full text-[#6E6E6E] font-semibold hover:text-[#BFBFBF] hover:bg-[#191A1B]/100 hover:backdrop-blur-md hover:shadow-lg hover:bg-[#191A1B]/20 transition-all duration-300"
+export default function Navbar() {
+  return (
+    <nav className="flex justify-between px-6 md:px-50 mt-5 items-center">
+      {/* Logo */}
+      <motion.div
+        className="h-10 flex items-center overflow-hidden"
         initial={{ opacity: 0, y: -70 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, type: "spring" }}
+        transition={{ duration: 1, delay: 0.95, type: "spring" }}
       >
-        {label}
-      </motion.button>
-    ))}
-  </div>
+        <img src="/logo.svg" alt="logo" className="h-30 w-auto block" />
+      </motion.div>
 
-  {/* Mobile Hamburger */}
-  <div className="md:hidden flex items-center">
-    <MobileMenu />
-  </div>
-</nav>
-    )
+      {/* Desktop Nav */}
+      <div className="hidden md:flex">
+        {navItems.map((item, i) => (
+          <motion.button
+            key={item.label}
+            className="px-6 py-2 rounded-full text-[#6E6E6E] font-semibold hover:text-[#BFBFBF] hover:bg-[#191A1B]/100 hover:backdrop-blur-md hover:shadow-lg hover:bg-[#191A1B]/20 transition-all duration-300"
+            initial={{ opacity: 0, y: -70 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, type: "spring" }}
+            onClick={() => {
+              document.getElementById(item.id)?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
+          >
+            {item.label}
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Mobile Hamburger */}
+      <div className="md:hidden flex items-center">
+        <MobileMenu />
+      </div>
+    </nav>
+  )
 }
 function MobileMenu() {
   const [open, setOpen] = useState(false);

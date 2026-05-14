@@ -18,14 +18,14 @@ const ExternalLinkIcon = () => (
 const projects = [
     {
         id: 1,
-        title: "Dev Portfolio Dashboard",
-        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80",
-        github: "https://github.com",
-        live: "https://example.com",
+        title: "Ridge - Roofing Website",
+        image: "./demoimage2.png",
+        github: "https://github.com/anikett250/roofing-demo4",
+        live: "https://ridgeroofingdemo.netlify.app/",
     },
     {
         id: 2,
-        title: "Design System Library",
+        title: "RoofClaim - Roofing Website",
         image: "./demoimage.png",
         github: "https://github.com/anikett250/roofing-demo2",
         live: "https://roofingdemo3.netlify.app/",

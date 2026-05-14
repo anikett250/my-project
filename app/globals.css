@@ -25,6 +25,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 /* 
 normal text #6E6E6E
 hover text #BFBFBF

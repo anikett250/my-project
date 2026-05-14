@@ -1,10 +1,11 @@
 "use client"
 import { useState } from "react";
+import Contact from "./contact";
 
 const navLinks = [
-  { label: "Projects", href: "#" },
-  { label: "About Us", href: "#" },
-  { label: "Testimonials", href: "#" },
+  { label: "Home", id: "home" },
+  { label: "Our Services", id: "services" },
+  { label: "Projects", id: "projects" },
 ];
 
 export default function ZenvraFooter() {
@@ -51,6 +52,11 @@ export default function ZenvraFooter() {
                   transition: "all 0.25s ease",
                 }}
                 className="px-6 sm:px-8 md:px-10 lg:px-12 py-3 sm:py-4 rounded-full border-2 text-xs sm:text-sm md:text-base font-medium tracking-wide cursor-pointer"
+                onClick={() => {
+                  document.getElementById("contact")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
               >
                 Let's Talk
               </button>
@@ -80,11 +86,11 @@ export default function ZenvraFooter() {
         </div>
 
         {/* Nav links */}
-        <nav className="flex items-center gap-4 sm:gap-6 md:gap-10">
+        <button className="flex items-center gap-4 sm:gap-6 md:gap-10">
           {navLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              id={link.id}
               onMouseEnter={() => setHovered(link.label)}
               onMouseLeave={() => setHovered(null)}
               style={{
@@ -93,11 +99,16 @@ export default function ZenvraFooter() {
                 textDecoration: "none",
               }}
               className="text-xs sm:text-sm tracking-wide"
+              onClick={() => {
+                document.getElementById(link.id)?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
             >
               {link.label} ↗
             </a>
           ))}
-        </nav>
+        </button>
 
         {/* Copyright */}
         <p style={{ color: "#6E6E6E" }} className="text-xs">
